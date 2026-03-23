@@ -14,4 +14,4 @@ Informació del sistema:
 Útils:
 - lp (Neteja la pantalla de tot el que s’hi mostra.)
 - scrib (Permet escriure text en pantalla o en un fitxer.)
-- adios/hastaluego (Apaga o reinicia el sistema segons l’opció que triïs)
+- adios/hastaluego (Apaga o reinicia el sistema)
