@@ -45,18 +45,28 @@ namespace NitroOS
                 Console.Write("NitroOS> ");
                 string cmd = Console.ReadLine();
 
-                if (cmd == "sos")
+                switch (cmd)
                 {
-                    ShowSOS();
-                }
-                if (cmd == "lp")
-                {
-                    Console.Clear();
-                }
-                else
-                {
-                    Console.WriteLine("Comanda no reconeguda. Escriu 'sos'");
-                }
+                    case "sos":
+                        ShowSOS();
+                        break;
+
+                    case "lp":
+                        Console.Clear();
+                        break;
+
+                    case "adeu":
+                        ExitOS();
+                        break;
+
+                    case "fora":
+                        ExitOS();
+                        break;
+
+                    default:
+                        Console.WriteLine("Comanda no reconeguda. Escriu 'sos'");
+                        break;
+                } 
             }
 
             // COMANDA SOS
@@ -83,6 +93,14 @@ namespace NitroOS
                 Console.WriteLine("adeu/fora   - Apaga o reinicia el sistema segons l’opció triada");
 
                 Console.WriteLine("=============================================");
+            }
+
+            // COMANDA ADEU / FORA
+            void ExitOS()
+            {
+                Console.WriteLine("Apagant el sistema... Adeu!");
+                // Sortir del Run() de Cosmos, que és l’única manera de "aturar"
+                while (true) { } // bloqueja la shell per simular apagament
             }
         }
     }
