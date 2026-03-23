@@ -19,7 +19,7 @@ namespace NitroOS
 
             // Versión del SO
             Console.WriteLine("cosmoOS v1.0 - Boot Sequence");
-            Console.WriteLine("Desarrollado por Eduardo - Granollers, 2026");
+            Console.WriteLine("Desenvolupament per Eduardo, Noha i Marc - Granollers, 2026");
             Console.Beep(1000, 200);  // Sonido boot [web:40]
 
             // Logo ASCII (centrado aprox., ajusta líneas)
@@ -32,11 +32,11 @@ namespace NitroOS
   | |__| | (_| | | | (_| | (_|
    \_____|\__,_| |_|\__,_|\__,|
 ");
-            Console.WriteLine("    Bienvenido al Sistema Operativo Básico");
+            Console.WriteLine("Benvingut al Sistema Operatiu Basic");
             Console.ResetColor();
 
             // Pausa para ver boot (luego inicia shell)
-            Console.WriteLine("\nPresiona Enter para shell...");
+            Console.WriteLine("\nPresiona Enter per a la shell...");
             Console.ReadLine();
 
             // Aquí inicia tu shell básica
