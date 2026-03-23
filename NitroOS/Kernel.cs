@@ -45,40 +45,62 @@ namespace NitroOS
                 Console.Write("NitroOS> ");
                 string cmd = Console.ReadLine();
 
-                if (cmd == "sos")
+                switch (cmd)
                 {
-                    ShowHelp();
-                }
-                else
-                {
-                    Console.WriteLine("Comanda no reconeguda. Escriu 'sos'");
-                }
+                    case "sos":
+                        ShowSOS();
+                        break;
+
+                    case "lp":
+                        Console.Clear();
+                        break;
+
+                    case "adeu":
+                        ExitOS();
+                        break;
+
+                    case "fora":
+                        ExitOS();
+                        break;
+
+                    default:
+                        Console.WriteLine("Comanda no reconeguda. Escriu 'sos'");
+                        break;
+                } 
             }
 
-            // COMANDA HELP
-            void ShowHelp()
+            // COMANDA SOS
+            void ShowSOS()
             {
-                Console.WriteLine("===== INFORMACIÓ DEL SISTEMA I COMANDES =====");
-                
-                Console.WriteLine("\n--- Gestió de fitxers i directoris ---");
+                Console.WriteLine("===== INFORMACIO DEL SISTEMA I COMANDES =====");
+
+                Console.WriteLine("\n--- Gestio de fitxers i directoris ---");
                 Console.WriteLine("lc       - Mostra tots els fitxers i carpetes dins del directori actual");
                 Console.WriteLine("cdir     - Canvia el directori actual a un altre especificat");
                 Console.WriteLine("hcdir    - Crea un nou directori amb el nom indicat");
-                Console.WriteLine("eldir    - Elimina un directori especificat (només si està buit o amb advertiment)");
-                Console.WriteLine("mc       - Mostra el contingut d’un fitxer sense obrir editor");
+                Console.WriteLine("eldir    - Elimina un directori especificat (nomes si esta buit o amb advertiment)");
+                Console.WriteLine("mc       - Mostra el contingut d'un fitxer sense obrir editor");
 
-                Console.WriteLine("\n--- Informació del sistema ---");
+                Console.WriteLine("\n--- Informacio del sistema ---");
                 Console.WriteLine("sos      - Mostra aquesta ajuda o llistat de totes les comandes disponibles");
-                Console.WriteLine("edicio   - Mostra la versió del sistema operatiu");
-                Console.WriteLine("seemem   - Mostra la memòria disponible i l’ús actual");
-                Console.WriteLine("tf       - Mostra el temps que el sistema ha estat funcionant des de l’últim reinici");
+                Console.WriteLine("edicio   - Mostra la versio del sistema operatiu");
+                Console.WriteLine("seemem   - Mostra la memoria disponible i l'ús actual");
+                Console.WriteLine("tf       - Mostra el temps que el sistema ha estat funcionant des de l'ultim reinici");
 
-                Console.WriteLine("\n--- Útils ---");
+                Console.WriteLine("\n--- Utils ---");
                 Console.WriteLine("lp          - Neteja la pantalla");
                 Console.WriteLine("scrib       - Permet escriure text en pantalla o en un fitxer");
-                Console.WriteLine("adeu/fora   - Apaga o reinicia el sistema segons l’opció triada");
+                Console.WriteLine("adeu/fora   - Apaga o reinicia el sistema segons l'opcio triada");
 
                 Console.WriteLine("=============================================");
+            }
+
+            // COMANDA ADEU / FORA
+            void ExitOS()
+            {
+                Console.WriteLine("Apagant el sistema... Adeu!");
+                // Sortir del Run() de Cosmos, que és l’única manera de "aturar"
+                while (true) { } // bloqueja la shell per simular apagament
             }
         }
     }
