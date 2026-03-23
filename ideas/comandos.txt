@@ -7,8 +7,8 @@ Gestió de fitxers i directoris:
 
 Informació del sistema:
 - sos (Mostra l’ajuda o llistat de totes les comandes disponibles amb una breu descripció.)
-- version (Mostra la versió del sistema operatiu.)
-- memoria (Mostra la memòria disponible i l’ús actual.)
+- edicio (Mostra la versió del sistema operatiu.)
+- seemem (Mostra la memòria disponible i l’ús actual.)
 - tf (Mostra el temps que el sistema ha estat funcionant des de l’últim reinici.)
 
 Útils:
