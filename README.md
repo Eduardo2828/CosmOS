@@ -11,9 +11,15 @@ Noha, Javier i Marc.
 
 
 *Com funciona el nostra sistema*:
+<img width="532" height="263" alt="image" src="https://github.com/user-attachments/assets/d0a3d2a0-f237-4cc4-a5a6-f92fd8262736" />
 
 [Captures, demo o fragments de codi del projecte ]
 
+Aquí podem veure la pantalla d’inici de NitroOS executant-se dins d’una màquina virtual amb CosmOS.
+
+A la part superior es veu la seqüència d’arrencada del sistema (Boot Sequence). Es mostra informació dels desenvolupadors del projecte i apareix el logotip de NitroOS en format ASCII art.
+
+Finalment, es mostra un missatge de benvinguda i una breu instrucció perquè l’usuari entri a la shell. 
 
 *Tecnologies utilitzades*:
 
@@ -32,9 +38,9 @@ Per a aquest servidor hem utilitzat llenguatge de programació en C#, com bé he
 
 *Autors i contribucions*:
 
-Noha -> Revisió/Documentació.
-Javier -> Documentació 
-Marc -> Programació
+👩 Noha -> Revisió/Documentació.
+👨 Javier -> Documentació 
+👨 Marc -> Programació
 
 
 *Llicència*:
@@ -65,7 +71,6 @@ Nosaltres disposem d'una llicència de codi obert per a aquest projecte.
 #*Reiniciar el sistema*:
 
 -----------------------------------------------------------------------------------------------------------------------------
-`
 using System.Diagnostics;
 
 void HastaLuego()
@@ -76,7 +81,7 @@ void HastaLuego()
         CreateNoWindow = true, 
         UseShellExecute = false 
     });
-} `
+}
 -----------------------------------------------------------------------------------------------------------------------------
 
 
