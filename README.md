@@ -17,7 +17,7 @@ Noha, Javier i Marc.
 
 <img width="532" height="263" alt="image" src="https://github.com/user-attachments/assets/d0a3d2a0-f237-4cc4-a5a6-f92fd8262736" />
 
-[Captures, demo o fragments de codi del projecte ]
+
 
 Aquí podem veure la pantalla d’inici de NitroOS executant-se dins d’una màquina virtual amb CosmOS.
 
