@@ -90,13 +90,18 @@ Nosaltres disposem d'una llicència de codi obert per a aquest projecte.
 using System.Diagnostics;
 
 void HastaLuego()
+
 {
+
     Console.WriteLine("Reiniciant el sistema...");
     Process.Start(new ProcessStartInfo("shutdown", "/r /t 0") 
+    
     { 
         CreateNoWindow = true, 
         UseShellExecute = false 
+    
     });
+    
 }
 -----------------------------------------------------------------------------------------------------------------------------
 
