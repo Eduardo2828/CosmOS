@@ -10,7 +10,11 @@ Noha, Javier i Marc.
 ![Logo del projecte](src/logo.png)
 
 
+
+
 *Com funciona el nostra sistema*:
+
+
 <img width="532" height="263" alt="image" src="https://github.com/user-attachments/assets/d0a3d2a0-f237-4cc4-a5a6-f92fd8262736" />
 
 [Captures, demo o fragments de codi del projecte ]
