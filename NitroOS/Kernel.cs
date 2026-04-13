@@ -1,16 +1,41 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Text;
 using Sys = Cosmos.System;
+using Cosmos.System.FileSystem;
+using Cosmos.System.FileSystem.VFS;
+using Cosmos.Core;
+using Cosmos.HAL;
 
 namespace NitroOS
 {
-    public class Kernel : Sys.Kernel
+    public partial class Kernel : Sys.Kernel
     {
+        // Crear la variable global del VFS
+        CosmosVFS fs = new CosmosVFS();
+
+        // Variable Directori Arrel de l'OS
+        string currentPath = @"0:\";
+
+        // Guardar segons d'inici del sistema per calcular el temps ences
+        int bootSeconds;
+
+        // Versio del sistema operatiu
+        string osVersion = "NitroOS v1.0";
 
         protected override void BeforeRun()
         {
-            Console.WriteLine("Cosmos booted successfully. Type a line of text to get it echoed back.");
+            // Canviar teclat US al ES abans d'engagar
+            Sys.KeyboardManager.SetKeyLayout(new Sys.ScanMaps.ESStandardLayout());
+
+            // Registrar el VFS
+            VFSManager.RegisterVFS(fs);
+
+            // Guardar l'hora d'inici del sistema
+            bootSeconds = (RTC.Hour * 3600) + (RTC.Minute * 60) + RTC.Second;
+
+            Console.WriteLine("Cosmos booted successfully.");
         }
 
         protected override void Run()
@@ -42,8 +67,14 @@ namespace NitroOS
             // SHELL
             while (true)
             {
-                Console.Write("NitroOS> ");
-                string cmd = Console.ReadLine();
+                Console.Write($"NitroOS {currentPath}> ");
+                string input = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(input))
+                    continue;
+
+                string[] parts = input.Split(' ');
+                string cmd = parts[0].ToLower();
 
                 switch (cmd)
                 {
@@ -63,145 +94,97 @@ namespace NitroOS
                         RebootOS();
                         break;
 
+                    case "lc":
+                        LlistarContingut();
+                        break;
+
+                    case "hcdir":
+                        if (parts.Length < 2)
+                        {
+                            Console.WriteLine("Us: hcdir nomDirectori");
+                        }
+                        else
+                        {
+                            CrearDirectori(parts[1]);
+                        }
+                        break;
+
+                    case "eldir":
+                        if (parts.Length < 2)
+                        {
+                            Console.WriteLine("Us: eldir nomDirectori");
+                        }
+                        else
+                        {
+                            EliminarDirectori(parts[1]);
+                        }
+                        break;
+
+                    case "mc":
+                        if (parts.Length < 2)
+                        {
+                            Console.WriteLine("Us: mc nomFitxer");
+                        }
+                        else
+                        {
+                            MostrarContingutFitxer(parts[1]);
+                        }
+                        break;
+
+                    case "cdir":
+                        if (parts.Length < 2)
+                        {
+                            Console.WriteLine("Us: cdir nomDirectori");
+                        }
+                        else
+                        {
+                            CanviarDirectori(parts[1]);
+                        }
+                        break;
+
+                    case "edicio":
+                        MostrarEdicio();
+                        break;
+
+                    case "seemem":
+                        MostrarMemoria();
+                        break;
+
+                    case "tf":
+                        MostrarTempsFuncionant();
+                        break;
+
+                    case "scrib":
+                        EscriureText();
+                        break;
+
+                    case "suma":
+                        FerSuma();
+                        break;
+
+                    case "resta":
+                        FerResta();
+                        break;
+
+                    case "multi":
+                        FerMultiplicacio();
+                        break;
+
+                    case "div":
+                        FerDivisio();
+                        break;
+
+                    case "mod":
+                        FerModul();
+                        break;
+
+                    case "arrel":
+                        FerArrelQuadrada();
+                        break;
+
                     default:
                         Console.WriteLine("Comanda no reconeguda. Escriu 'sos'");
                         break;
-                }
-            }
-
-            // COMANDA SOS
-            void ShowSOS()
-            {
-                Console.WriteLine("===== INFORMACIO DEL SISTEMA I COMANDES =====");
-
-                Console.WriteLine("\n--- Gestio de fitxers i directoris ---");
-                Console.WriteLine("lc       - Mostra tots els fitxers i carpetes dins del directori actual");
-                Console.WriteLine("cdir     - Canvia el directori actual a un altre especificat");
-                Console.WriteLine("hcdir    - Crea un nou directori amb el nom indicat");
-                Console.WriteLine("eldir    - Elimina un directori especificat (nomes si esta buit o amb advertiment)");
-                Console.WriteLine("mc       - Mostra el contingut d'un fitxer sense obrir editor");
-
-                Console.WriteLine("\n--- Informacio del sistema ---");
-                Console.WriteLine("sos      - Mostra aquesta ajuda o llistat de totes les comandes disponibles");
-                Console.WriteLine("edicio   - Mostra la versio del sistema operatiu");
-                Console.WriteLine("seemem   - Mostra la memoria disponible i l'ús actual");
-                Console.WriteLine("tf       - Mostra el temps que el sistema ha estat funcionant des de l'ultim reinici");
-
-                Console.WriteLine("\n--- Calculadora ---");
-                Console.WriteLine("suma     - Fa una suma de dos nombres");
-                Console.WriteLine("resta    - Fa una resta de dos nombres");
-                Console.WriteLine("multi    - Fa una multiplicacio de dos nombres");
-                Console.WriteLine("div      - Fa una divisio de dos nombres");
-                Console.WriteLine("mod      - Fa el modul de dos nombres");
-                Console.WriteLine("arrel    - Fa l'arrel quadrada d'un nombre");
-
-                Console.WriteLine("\n--- Utils ---");
-                Console.WriteLine("lp       - Neteja la pantalla");
-                Console.WriteLine("scrib    - Permet escriure text en pantalla o en un fitxer");
-                Console.WriteLine("adeu     - Apaga el sistema");
-                Console.WriteLine("fora     - Reinicia el sistema");
-
-                Console.WriteLine("=============================================");
-            }
-
-            // COMANDA ADEU
-            void ShutdownOS()
-            {
-                Console.WriteLine("Apagant el sistema...");
-                Sys.Power.Shutdown();
-
-            }
-
-            // COMANDA FORA
-            void RebootOS()
-            {
-                Console.WriteLine("Reiniciant el sistema...");
-                Sys.Power.Reboot();
-            }
-
-            // COMANDA SUMA
-            void FerSuma()
-            {
-                double num1 = LlegirNumero("Introdueix el primer nombre: ");
-                double num2 = LlegirNumero("Introdueix el segon nombre: ");
-                Console.WriteLine("Resultat: " + (num1 + num2));
-            }
-
-            // COMANDA RESTA
-            void FerResta()
-            {
-                double num1 = LlegirNumero("Introdueix el primer nombre: ");
-                double num2 = LlegirNumero("Introdueix el segon nombre: ");
-                Console.WriteLine("Resultat: " + (num1 - num2));
-            }
-
-            // COMANDA MULTIPLICACIÓ
-            void FerMultiplicacio()
-            {
-                double num1 = LlegirNumero("Introdueix el primer nombre: ");
-                double num2 = LlegirNumero("Introdueix el segon nombre: ");
-                Console.WriteLine("Resultat: " + (num1 * num2));
-            }
-
-            // COMANDA DIVISIÓ
-            void FerDivisio()
-            {
-                double num1 = LlegirNumero("Introdueix el dividend: ");
-                double num2 = LlegirNumero("Introdueix el divisor: ");
-
-                if (num2 == 0)
-                {
-                    Console.WriteLine("Error: no es pot dividir per zero");
-                    return;
-                }
-
-                Console.WriteLine("Resultat: " + (num1 / num2));
-            }
-
-            // COMANDA MÒDUL
-            void FerModul()
-            {
-                double num1 = LlegirNumero("Introdueix el primer nombre: ");
-                double num2 = LlegirNumero("Introdueix el segon nombre: ");
-
-                if (num2 == 0)
-                {
-                    Console.WriteLine("Error: no es pot fer modul amb zero");
-                    return;
-                }
-
-                Console.WriteLine("Resultat: " + (num1 % num2));
-            }
-
-            // COMANDA ARREL QUADRADA
-            void FerArrelQuadrada()
-            {
-                double num = LlegirNumero("Introdueix el nombre: ");
-
-                if (num < 0)
-                {
-                    Console.WriteLine("Error: no es pot fer l'arrel quadrada d'un nombre negatiu");
-                    return;
-                }
-
-                Console.WriteLine("Resultat: " + Math.Sqrt(num));
-            }
-
-            double LlegirNumero(string missatge)
-            {
-                while (true)
-                {
-                    Console.Write(missatge);
-                    string entrada = Console.ReadLine();
-
-                    try
-                    {
-                        return double.Parse(entrada);
-                    }
-                    catch
-                    {
-                        Console.WriteLine("Error: introdueix un nombre valid");
-                    }
                 }
             }
         }
