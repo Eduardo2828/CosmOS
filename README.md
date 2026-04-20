@@ -91,7 +91,12 @@ Nosaltres disposem d'una llicència de codi obert per a aquest projecte.
 
 ·Apagar/reiniciar
 
+S'han implementat implementat les funcions per controlar l’estat del sistema:
 
+- Apagat del sistema
+  Cosmos.Sys.Deboot.ShutDown();
+- Reinici del sistema
+  Cosmos.Sys.Deboot.Reboot();
 
 *Exemples d'una de les funcions creades*
 
