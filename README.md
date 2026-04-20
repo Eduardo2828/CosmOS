@@ -92,12 +92,19 @@ Nosaltres disposem d'una llicència de codi obert per a aquest projecte.
 ·Apagar/reiniciar
 
 ·sistema de comandes que permet a l’usuari introduir operacions matemàtiques bàsiques:
+
     Suma (+)
+    
     Resta (-)
+    
     Multiplicació (*)
+    
     Divisió (/)
+    
     Mòdul (%)
+    
     Arrel quadrada (sqrt)
+    
     
 S'han implementat implementat les funcions per controlar l’estat del sistema:
 
@@ -105,6 +112,12 @@ S'han implementat implementat les funcions per controlar l’estat del sistema:
   Cosmos.Sys.Deboot.ShutDown();
 - Reinici del sistema
   Cosmos.Sys.Deboot.Reboot();
+
+En el desenvolupament del sistema operatiu s’ha detectat que per defecte COSMOS OS utilitza un teclat americana. Per tal de millorar l’experiència d’usuari i adaptar-lo a la configuració local, s’ha implementat la possibilitat de configurar el layout del teclat.
+
+Per establir el layout del teclat desitjat, s’ha afegit la següent línia de codi dins de la funció `BeforeRun()`:
+
+Sys.KeyboardManager.SetKeyLayout(new Sys.ScanMaps.ESStandardLayout());
 
 *Exemples d'una de les funcions creades*
 
