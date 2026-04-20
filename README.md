@@ -91,6 +91,14 @@ Nosaltres disposem d'una llicència de codi obert per a aquest projecte.
 
 ·Apagar/reiniciar
 
+·sistema de comandes que permet a l’usuari introduir operacions matemàtiques bàsiques:
+    Suma (+)
+    Resta (-)
+    Multiplicació (*)
+    Divisió (/)
+    Mòdul (%)
+    Arrel quadrada (sqrt)
+    
 S'han implementat implementat les funcions per controlar l’estat del sistema:
 
 - Apagat del sistema
