@@ -11,84 +11,63 @@ namespace NitroOS
 {
     public partial class Kernel
     {
-        // Mixer d'audio que permet afegir diferents sons per reproduir-los
+        // Mixer principal del sistema d'audio
         AudioMixer mixer;
 
-        // AudioManager que connecta el mixer amb el driver de sortida d'audio
+        // Gestor que envia el so del mixer cap al driver AC97
         AudioManager audioManager;
 
-        // Inicialitza el sistema d'audio utilitzant el driver AC97
+        // Indica si l'audio s'ha pogut inicialitzar correctament
+        bool audioDisponible = false;
+
+        // Inicialitza el sistema d'audio amb el driver AC97
         void InicialitzarAudio()
         {
             try
             {
-                // Creem el mixer principal
                 mixer = new AudioMixer();
 
-                // Inicialitzem el driver AC97 amb una mida de buffer de 4096
+                // Driver d'audio AC97
                 var driver = AC97.Initialize(4096);
 
-                // Connectem el mixer amb el driver de sortida
                 audioManager = new AudioManager()
                 {
                     Stream = mixer,
                     Output = driver
                 };
 
-                // Activem el sistema d'audio
                 audioManager.Enable();
+
+                audioDisponible = true;
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error inicialitzant audio: " + e.Message);
+                audioDisponible = false;
+                Console.WriteLine("Audio no disponible: " + e.Message);
             }
         }
 
-        // Llegeix un fitxer WAV incrustat com a recurs dins del projecte
-        byte[] LlegirAudioResource(string nomRecurs)
+        // Reprodueix un fitxer WAV guardat al disc del sistema
+        void ReproduirWav(string ruta)
         {
             try
             {
-                // Obtenim l'assembly actual, que conte els recursos incrustats
-                var assembly = Assembly.GetExecutingAssembly();
-
-                // Obrim el recurs WAV indicat
-                Stream stream = assembly.GetManifestResourceStream(nomRecurs);
-
-                if (stream == null)
-                {
-                    Console.WriteLine("No s'ha trobat el recurs: " + nomRecurs);
-                    return null;
-                }
-
-                // Convertim el recurs a array de bytes
-                byte[] bytes = new byte[stream.Length];
-                stream.Read(bytes, 0, bytes.Length);
-
-                return bytes;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error llegint recurs d'audio: " + e.Message);
-                return null;
-            }
-        }
-
-        // Reprodueix un fitxer WAV carregat des dels recursos del projecte
-        void ReproduirAudioResource(string nomRecurs)
-        {
-            try
-            {
-                // Llegim el fitxer WAV com a bytes
-                byte[] audioBytes = LlegirAudioResource(nomRecurs);
-
-                if (audioBytes == null)
+                if (!audioDisponible)
                     return;
 
-                // Convertim el WAV en un MemoryAudioStream
+                if (!File.Exists(ruta))
+                {
+                    Console.WriteLine("No s'ha trobat l'audio: " + ruta);
+                    return;
+                }
+
+                // Llegim el fitxer WAV com a array de bytes
+                byte[] audioBytes = File.ReadAllBytes(ruta);
+
+                // Convertim el WAV en un stream d'audio
                 var audioStream = MemoryAudioStream.FromWave(audioBytes);
 
-                // Afegim el so al mixer perquè es reprodueixi
+                // Afegim el stream al mixer perquè es reprodueixi
                 mixer.Streams.Add(audioStream);
             }
             catch (Exception e)
@@ -97,22 +76,22 @@ namespace NitroOS
             }
         }
 
-        // So que es reprodueix quan arrenca el sistema
+        // So d'inici del sistema
         void SoInici()
         {
-            ReproduirAudioResource("NitroOS.Resources.inici.wav");
+            ReproduirWav(@"0:\sons\inici.wav");
         }
 
-        // So que es reprodueix quan una comanda és correcta
+        // So quan una comanda és correcta
         void SoComandaCorrecta()
         {
-            ReproduirAudioResource("NitroOS.Resources.correcte.wav");
+            ReproduirWav(@"0:\sons\correcte.wav");
         }
 
-        // So que es reprodueix quan hi ha un error
+        // So quan hi ha un error
         void SoError()
         {
-            ReproduirAudioResource("NitroOS.Resources.error.wav");
+            ReproduirWav(@"0:\sons\error.wav");
         }
     }
 }
