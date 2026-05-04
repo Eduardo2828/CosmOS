@@ -186,6 +186,10 @@ MemoryAudioStream bootStream, okStream, errorStream;
 L'àudio està implementat amb AudioMixer, MemoryAudioStream i AC97.
 En VMware pot no funcionar correctament perquè el driver d'àudio compatible és AC97.
 Per provar el so es recomana executar el sistema amb VirtualBox i configurar Audio Controller com ICH AC97.
+Per això el que fem es compilar i després agafar la iso que es genera després de compilar i obrir-la amb una màquina virtual de VirtualBox.
+
+Hem editat l'arxiu de projecte, .csproj.
+
 
 -----------------------------------------------------------------------------------------------------------------------------
 Hist: Funció que mostra les 5 últimes comandes fetes (s'emmagatzemen en una llista)

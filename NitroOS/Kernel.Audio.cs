@@ -4,12 +4,21 @@ using Cosmos.System.Audio;
 using Cosmos.System.Audio.DSP;
 using Cosmos.System.Audio.IO;
 using System;
-using System.IO;
+using IL2CPU.API.Attribs;
 
 namespace NitroOS
 {
     public partial class Kernel
     {
+        [ManifestResourceStream(ResourceName = "NitroOS.Resources.sons.inici.wav")]
+        static byte[] audioInici;
+
+        [ManifestResourceStream(ResourceName = "NitroOS.Resources.sons.correcte.wav")]
+        static byte[] audioCorrecte;
+
+        [ManifestResourceStream(ResourceName = "NitroOS.Resources.sons.error.wav")]
+        static byte[] audioError;
+
         // Mixer principal del sistema d'audio
         AudioMixer mixer;
 
@@ -47,26 +56,22 @@ namespace NitroOS
         }
 
         // Reprodueix un fitxer WAV guardat al disc del sistema
-        void ReproduirWav(string ruta)
+        void ReproduirWav(byte[] audioBytes)
         {
             try
             {
                 if (!audioDisponible)
                     return;
 
-                if (!File.Exists(ruta))
+                if (audioBytes == null || audioBytes.Length == 0)
                 {
-                    Console.WriteLine("No s'ha trobat l'audio: " + ruta);
+                    Console.WriteLine("Audio buit o no carregat.");
                     return;
                 }
 
-                // Llegim el fitxer WAV com a array de bytes
-                byte[] audioBytes = File.ReadAllBytes(ruta);
+                mixer.Streams.Clear();
 
-                // Convertim el WAV en un stream d'audio
                 var audioStream = MemoryAudioStream.FromWave(audioBytes);
-
-                // Afegim el stream al mixer perquè es reprodueixi
                 mixer.Streams.Add(audioStream);
             }
             catch (Exception e)
@@ -74,23 +79,38 @@ namespace NitroOS
                 Console.WriteLine("Error reproduint audio: " + e.Message);
             }
         }
-        
+
         // So d'inici del sistema
         void SoInici()
         {
-            ReproduirWav(@"0:\sons\inici.wav");
+            ReproduirWav(audioInici);
         }
 
         // So quan una comanda és correcta
         void SoComandaCorrecta()
         {
-            ReproduirWav(@"0:\sons\correcte.wav");
+            ReproduirWav(audioCorrecte);
         }
 
         // So quan hi ha un error
         void SoError()
         {
-            ReproduirWav(@"0:\sons\error.wav");
+            ReproduirWav(audioError);
+        }
+
+        void AturarAudio()
+        {
+            try
+            {
+                if (mixer != null)
+                {
+                    mixer.Streams.Clear();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error aturant audio: " + e.Message);
+            }
         }
     }
 }

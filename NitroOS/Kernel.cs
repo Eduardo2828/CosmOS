@@ -35,7 +35,7 @@ namespace NitroOS
             // Guardar l'hora d'inici del sistema
             bootSeconds = (RTC.Hour * 3600) + (RTC.Minute * 60) + RTC.Second;
 
-            // Inicialitzem l'audio despres de registrar el sistema de fitxers
+            // Preparem i inicialitzem l'audio despres de registrar el sistema de fitxers
             InicialitzarAudio();
 
             Console.WriteLine("Cosmos booted successfully.");
@@ -46,7 +46,7 @@ namespace NitroOS
             Console.Clear();  // Limpia pantalla VGA text mode [web:47]
 
             // Versión del SO
-            Console.WriteLine("cosmoOS v1.5 - Boot Sequence");
+            Console.WriteLine("cosmoOS v1.6 - Boot Sequence");
             Console.WriteLine("Desenvolupament per Eduardo, Noha i Marc - Granollers, 2026");
 
             // AUDIO D'INICI
@@ -68,6 +68,7 @@ namespace NitroOS
             // Pausa para ver boot (luego inicia shell)
             Console.WriteLine("\nPresiona Enter per a la shell...");
             Console.ReadLine();
+            AturarAudio();
 
             // SHELL
             while (true)
@@ -96,20 +97,24 @@ namespace NitroOS
             switch (cmd)
             {
                 case "sos":
+                    SoComandaCorrecta();
                     ShowSOS();
                     break;
 
                 case "lp":
+                    SoComandaCorrecta();
                     Console.Clear();
                     break;
 
                 case "hist":
+                    SoComandaCorrecta();
                     MostrarHistorial();
                     break;
 
                 case "repetir":
                     if (parts.Length < 2)
                     {
+                        SoError();
                         Console.WriteLine("Us: repetir numero");
                     }
                     else
@@ -124,95 +129,140 @@ namespace NitroOS
                                 Console.WriteLine("Executant: " + comandaRecuperada);
                                 ExecutarComanda(comandaRecuperada, true);
                             }
+                            else
+                            {
+                                SoError();
+                            }
                         }
                         catch
                         {
                             Console.WriteLine("Error: has d'indicar un numero valid.");
+                            SoError();
                         }
                     }
                     break;
 
                 case "adeu":
+                    SoComandaCorrecta();
                     ShutdownOS();
                     break;
 
                 case "fora":
+                    SoComandaCorrecta();
                     RebootOS();
                     break;
 
                 case "lc":
+                    SoComandaCorrecta();
                     LlistarContingut();
                     break;
 
                 case "hcdir":
+
                     if (parts.Length < 2)
+                    {
+                        SoError();
                         Console.WriteLine("Us: hcdir nomDirectori");
+                    }
                     else
+                    {
+                        SoComandaCorrecta();
                         CrearDirectori(parts[1]);
+                    }
                     break;
 
                 case "eldir":
                     if (parts.Length < 2)
+                    {
+                        SoError();
                         Console.WriteLine("Us: eldir nomDirectori");
+                    }
                     else
+                    {
+                        SoComandaCorrecta();
                         EliminarDirectori(parts[1]);
+                    }
                     break;
 
                 case "mc":
+
                     if (parts.Length < 2)
+                    {
+                        SoError();
                         Console.WriteLine("Us: mc nomFitxer");
+                    }
                     else
+                    {
+                        SoComandaCorrecta();
                         MostrarContingutFitxer(parts[1]);
+                    }
                     break;
 
                 case "cdir":
                     if (parts.Length < 2)
+                    {
+                        SoError();
                         Console.WriteLine("Us: cdir nomDirectori");
+                    }
                     else
+                    {
+                        SoComandaCorrecta();
                         CanviarDirectori(parts[1]);
+                    }
                     break;
 
                 case "edicio":
+                    SoComandaCorrecta();
                     MostrarEdicio();
                     break;
 
                 case "seemem":
+                    SoComandaCorrecta();
                     MostrarMemoria();
                     break;
 
                 case "tf":
+                    SoComandaCorrecta();
                     MostrarTempsFuncionant();
                     break;
 
                 case "scrib":
+                    SoComandaCorrecta();
                     EscriureText();
                     break;
 
                 case "suma":
+                    SoComandaCorrecta();
                     FerSuma();
                     break;
 
                 case "resta":
+                    SoComandaCorrecta();
                     FerResta();
                     break;
 
                 case "multi":
+                    SoComandaCorrecta();
                     FerMultiplicacio();
                     break;
 
                 case "div":
+                    SoComandaCorrecta();
                     FerDivisio();
                     break;
 
                 case "mod":
+                    SoComandaCorrecta();
                     FerModul();
                     break;
 
                 case "arrel":
+                    SoComandaCorrecta();
                     FerArrelQuadrada();
                     break;
 
                 default:
+                    SoError();
                     Console.WriteLine("Comanda no reconeguda. Escriu 'sos'");
                     break;
             }
