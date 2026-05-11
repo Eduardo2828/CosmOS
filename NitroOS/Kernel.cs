@@ -45,7 +45,7 @@ namespace NitroOS
         {
             Console.Clear();  // Limpia pantalla VGA text mode [web:47]
 
-            // Versión del SO
+            // Versión del ISO
             Console.WriteLine(osVersion + " - Boot Sequence");
             Console.WriteLine("Desenvolupament per Eduardo, Noha i Marc - Granollers, 2026");
 
