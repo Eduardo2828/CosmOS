@@ -75,7 +75,7 @@ namespace NitroOS
         // COMANDA EDICIO
         void MostrarEdicio()
         {
-            Console.WriteLine("Versio del sistema: " + osVersion);
+            EscriureSortida("Versio del sistema: " + osVersion);
         }
 
         // COMANDA SEEMEM
