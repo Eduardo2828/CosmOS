@@ -1,64 +1,25 @@
-<div align="center">
+🚀 COMANDES
+Llistat de comandes disponibles a NitroOS
 
-# 🚀 COMANDOS 🚀
+📂 Gestió de fitxers i directoris
+💻 Comanda	📌 Funció
+lc	Mostra tots els fitxers i carpetes que hi ha dins del directori actual
+cdir	Canvia el directori actual a un altre especificat
+hcdir	Crea un nou directori (carpeta) amb el nom que li indiquis
+eldir	Elimina un directori especificat (només si està buit o amb advertiment)
+mc	Mostra el contingut d’un fitxer en pantalla sense obrir un editor
 
-<img src="https://img.shields.io/badge/NitroOS-Shell-blue?style=for-the-badge">
-<img src="https://img.shields.io/badge/C%23-CosmosOS-purple?style=for-the-badge">
-<img src="https://img.shields.io/badge/Terminal-Commands-success?style=for-the-badge">
 
-### 📚 Llistat de comandes disponibles dins de NitroOS
+⚙️ Informació del sistema
+💻 Comanda	📌 Funció
+sos	Mostra l’ajuda o llistat de totes les comandes disponibles amb una breu descripció
+edicio	Mostra la versió del sistema operatiu
+seemem	Mostra la memòria disponible i l’ús actual
+tf	Mostra el temps que el sistema ha estat funcionant des de l’últim reinici
 
-</div>
 
----
-
-# 📂 Gestió de fitxers i directoris
-
-| 💻 Comanda | 📌 Descripció |
-|---|---|
-| `lc` | 📁 Mostra tots els fitxers i carpetes del directori actual |
-| `cdir` | 📂 Canvia el directori actual a un altre especificat |
-| `hcdir` | 🆕 Crea un nou directori amb el nom indicat |
-| `eldir` | ❌ Elimina un directori especificat |
-| `mc` | 📄 Mostra el contingut d’un fitxer en pantalla |
-
----
-
-# ⚙️ Informació del sistema
-
-| 💻 Comanda | 📌 Descripció |
-|---|---|
-| `sos` | 🆘 Mostra totes les comandes disponibles i la seva ajuda |
-| `edicio` | 🏷️ Mostra la versió actual del sistema operatiu |
-| `seemem` | 🧠 Mostra la memòria disponible i l’ús actual |
-| `tf` | ⏱️ Mostra el temps de funcionament del sistema |
-
----
-
-# 🛠️ Utilitats
-
-| 💻 Comanda | 📌 Descripció |
-|---|---|
-| `lp` | 🧹 Neteja completament la pantalla |
-| `scrib` | ✍️ Escriu text en pantalla o dins d’un fitxer |
-| `adeu` | 🔴 Apaga el sistema |
-| `fora` | 🔄 Reinicia el sistema |
-
----
-
-<div align="center">
-
-# 💻 Exemple d'ús
-
-</div>
-
-```bash
-> lc
-Documents
-Sistema
-notes.txt
-
-> cdir Documents
-
-> mc notes.txt
-Benvingut a NitroOS 🚀
+🛠️ Útils
+💻 Comanda	📌 Funció
+lp	Neteja la pantalla de tot el que s’hi mostra
+scrib	Permet escriure text en pantalla o en un fitxer
+adeu / fora	Apaga o reinicia el sistema segons l’opció que triïs
