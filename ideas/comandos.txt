@@ -33,5 +33,5 @@ arrel            Fa l'arrel quadrada"
 hist             Mostra les ultimes 5 comandes executades
 repetir          Torna a executar una comanda de l'historial
 lp	             Neteja la pantalla de tot el que s’hi mostra
-scrib	           Permet escriure text en pantalla o en un fitxer
-adeu/fora	       Apaga o reinicia el sistema segons l’opció que triïs
+scrib            Permet escriure text en pantalla o en un fitxer
+adeu/fora        Apaga o reinicia el sistema segons l’opció que triïs
