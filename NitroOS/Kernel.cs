@@ -24,6 +24,7 @@ namespace NitroOS
         // Versio del sistema operatiu
         string osVersion = "NitroOS v1.7";
 
+
         protected override void BeforeRun()
         {
             // Canviar teclat US al ES abans d'engagar
