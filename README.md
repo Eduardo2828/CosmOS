@@ -1,188 +1,348 @@
 **NitroOS**🚀
+### *El nostre sistema operatiu desenvolupat amb CosmosOS*
 
-*Descripció*: NitroOS és el nostra propi sistema operatiu que hem desenvolupat amb CosmOS. Uilitza el llenguatge de C#. Tenint com a objectiu del projecte construir un entorn de consola que ens pugui permetre gestionar fitxers, directoris i informació del sistema de manera bàsica.
+---
 
+## 🌌 Descripció del projecte
 
-*Noms dels membres del grup*:
+**NitroOS** és un sistema operatiu desenvolupat en **C#** utilitzant el framework **CosmosOS**. El principal objectiu del projecte és construir un entorn de consola funcional capaç de gestionar:
 
-Noha, Javier i Marc.
+* 📂 Fitxers
+* 📁 Directoris
+* ⚙️ Informació bàsica del sistema
+* 💻 Execució de comandes pròpies
 
-  ![Logo del projecte](src/logo.png)
+Aquest projecte ens ha permès entendre millor el funcionament intern d’un sistema operatiu i experimentar amb la gestió de maquinari i recursos des d’un nivell més baix.
 
+---
 
+# 👨‍💻 Membres del grup
 
+| Nom       | Funció                 |
+| --------- | ---------------------- |
+| 👩 Noha   | Revisió i documentació |
+| 👨 Javier | Documentació           |
+| 👨 Marc   | Programació            |
 
-*Com funciona el nostra sistema*:
+---
 
+## 🖼️ Logo del projecte
 
-<img width="532" height="263" alt="image" src="https://github.com/user-attachments/assets/d0a3d2a0-f237-4cc4-a5a6-f92fd8262736" />
+<p align="center">
+  <img src="src/logo.png" alt="Logo NitroOS" width="300">
+</p>
 
+---
 
+# 🖥️ Funcionament del sistema
 
+<p align="center">
+  <img width="700" alt="Pantalla d'inici NitroOS" src="https://github.com/user-attachments/assets/d0a3d2a0-f237-4cc4-a5a6-f92fd8262736" />
+</p>
 
+### 🔹 Pantalla d’inici
 
-Aquí podem veure la pantalla d’inici de NitroOS executant-se dins d’una màquina virtual amb CosmOS.
+Aquesta és la pantalla inicial de **NitroOS** executant-se dins d’una màquina virtual amb **CosmosOS**.
 
-A la part superior es veu la seqüència d’arrencada del sistema (Boot Sequence). Es mostra informació dels desenvolupadors del projecte i apareix el logotip de NitroOS en format ASCII art.
+Durant l’arrencada del sistema podem observar:
 
-Finalment, es mostra un missatge de benvinguda i una breu instrucció perquè l’usuari entri a la shell. 
+* ⚡ La seqüència de *boot* del sistema
+* 👨‍💻 Informació dels desenvolupadors
+* 🎨 El logotip de NitroOS en format ASCII Art
+* 💬 Un missatge de benvinguda
+* ⌨️ Instruccions per entrar a la shell del sistema
 
+---
 
+# 🛠️ Tecnologies utilitzades
 
-*Tecnologies utilitzades*:
+Aquest projecte ha estat desenvolupat utilitzant les següents tecnologies:
 
-Per a aquest servidor hem utilitzat llenguatge de programació en C#, com bé hem dit abans, el framework és de CosmOS, com a IDE tenim el Visual Studio Code 2022 i la plataforma que utilitcem és la .NET.
+| Tecnologia                 | Ús                                      |
+| -------------------------- | --------------------------------------- |
+| 💜 C#                      | Llenguatge de programació principal     |
+| 🌌 CosmosOS                | Framework per crear el sistema operatiu |
+| 🧠 .NET                    | Plataforma de desenvolupament           |
+| 💻 Visual Studio Code 2022 | Entorn de desenvolupament (IDE)         |
+| 🖥️ VirtualBox / VMware    | Execució en màquines virtuals           |
 
+---
 
+# 📦 Instal·lació i ús
 
-*Instal·lació i ús*:
-
+```bash
 [Més endavant]
+```
 
+---
 
+# 🧱 Estructura del projecte
 
-*Estructura del projecte*:
+📌 *Properament s’afegiran captures i explicacions detallades de l’estructura interna del sistema.*
 
-[Captures + explicacions]
+---
 
+# 🚧 Roadmap i millores futures
 
+## 📂 Sistema de fitxers
 
-*Autors i contribucions*:
+* ✅ Llistar contingut
+* ✅ Canviar directori
+* ✅ Crear directori
+* ✅ Eliminar directori
+* ✅ Mostrar contingut de fitxers
 
-👩 Noha -> Revisió/Documentació.
-👨 Javier -> Documentació 
-👨 Marc -> Programació
+## ⚙️ Sistema
 
+* ✅ Informació del sistema
+* ✅ Mostrar ajuda
+* ✅ Mostrar versió del SO
+* ✅ Mostrar memòria disponible
+* ✅ Temps de funcionament
 
+## 🖥️ Consola
 
-*Llicència*:
+* ✅ Netejar pantalla
+* ✅ Escriure text
+* ✅ Apagar / Reiniciar sistema
+* ✅ Sistema de comandes matemàtiques bàsiques
 
-Nosaltres disposem d'una llicència de codi obert per a aquest projecte.
+---
 
+# 🔌 Control de l’estat del sistema
 
+S’han implementat funcions per controlar l’estat del sistema operatiu:
 
-*Roadmap o millores futures*:
+## 🔴 Apagar sistema
 
-·Llistar contingut
+```csharp
+Cosmos.Sys.Deboot.ShutDown();
+```
 
-·Canviar directori
+## 🔄 Reiniciar sistema
 
-·Crear directori
+```csharp
+Cosmos.Sys.Deboot.Reboot();
+```
 
-·Eliminar directori
+---
 
-·Mostrar contingut fitxer
+# ⌨️ Configuració del teclat
 
-·Informació del sistema
+Per defecte, **CosmosOS** utilitza una distribució de teclat americana 🇺🇸.
 
+Per adaptar el sistema a la configuració local 🇪🇸, s’ha implementat la possibilitat de configurar el layout del teclat.
 
-·Mostrar ajuda
+## 📌 Configuració dins de `BeforeRun()`
 
-·Versió del SO
+```csharp
+Sys.KeyboardManager.SetKeyLayout(
+    new Sys.ScanMaps.ESStandardLayout()
+);
+```
 
-·Memòria disponible
+---
 
-·Temps de funcionament
+# 💡 Exemple d’una funció implementada
 
+## 🔄 Reiniciar el sistema
 
-·Netejar pantalla
-
-·Escriure text
-
-·Apagar/reiniciar
-
-·sistema de comandes que permet a l’usuari introduir operacions matemàtiques bàsiques:    
-    
-S'han implementat implementat les funcions per controlar l’estat del sistema:
-
-- Apagat del sistema
-  Cosmos.Sys.Deboot.ShutDown();
-- Reinici del sistema
-  Cosmos.Sys.Deboot.Reboot();
-
-En el desenvolupament del sistema operatiu s’ha detectat que per defecte COSMOS OS utilitza un teclat americana. Per tal de millorar l’experiència d’usuari i adaptar-lo a la configuració local, s’ha implementat la possibilitat de configurar el layout del teclat.
-
-Per establir el layout del teclat desitjat, s’ha afegit la següent línia de codi dins de la funció `BeforeRun()`:
-
-Sys.KeyboardManager.SetKeyLayout(new Sys.ScanMaps.ESStandardLayout());
-
-*Exemples d'una de les funcions creades*
-
-
-#*Reiniciar el sistema*:
-
------------------------------------------------------------------------------------------------------------------------------
+```csharp
 using System.Diagnostics;
 
 void HastaLuego()
-
 {
-
     Console.WriteLine("Reiniciant el sistema...");
-    Process.Start(new ProcessStartInfo("shutdown", "/r /t 0") 
-    
-    { 
-        CreateNoWindow = true, 
-        UseShellExecute = false 
-    
+
+    Process.Start(new ProcessStartInfo("shutdown", "/r /t 0")
+    {
+        CreateNoWindow = true,
+        UseShellExecute = false
     });
-    
 }
------------------------------------------------------------------------------------------------------------------------------
-Sistema de fitxers
+```
 
-Necessitarem un sistema de fitxers per a administrar fitxers, per fer aìxo declararem un objecte global del VFS: Sys.FileSystem.CosmosVFS fs = new Cosmos.System.FileSystem.CosmosVFS();
-Ho registrarem al VFSManager dins de BeforeRun(): Sys.FileSystem.VFS.VFSManager.RegisterVFS(fs);
-Afegirem la referència a System.IO per poder usar File i Directory.
+---
 
-Formatarem el disc, primer el buscarem amb VFSManager.GetDisks() i després formatarem el disc amb Disk.FormatDisk(int index, string format, bool quick = true) en FAT32
+# 📁 Sistema de fitxers
 
-Comandes bàsiques:
-Obtenir tots els fitxers d’un camí: var files_list = Directory.GetFiles(@"0:\\");.
-Mostrar els noms amb un foreach (var file in files_list) { Console.WriteLine(file); }.
-Obtenir també directoris amb: var directory_list = Directory.GetDirectories(@"0:\\"); i recórrer-los amb un altre foreach.
+Per administrar fitxers i directoris s’utilitza el sistema **CosmosVFS**.
 
-Llegir tots els fitxers d’un directori: primer var directory_list = Directory.GetFiles(@"0:\\");.
-Per a cada fitxer, llegir i mostrar contingut dins d’un try-catch: var content = File.ReadAllText(file); i després escriure nom, mida i contingut.
+## 📌 Declaració del VFS
 
-Crear un fitxer nou: File.Create(@"0:\\testing.txt"); dins d’un try { ... } catch (Exception e) { ... }.
-Crear un directori nou: Directory.Create(@"0:\\testdirectory\\"); també amb try-catch.
-Esborrar fitxer i directori: File.Delete(@"0:\\testing.txt"); i Directory.Delete(@"0:\\testdirectory\\");.
+```csharp
+Sys.FileSystem.CosmosVFS fs =
+    new Cosmos.System.FileSystem.CosmosVFS();
+```
 
+## 📌 Registrar el VFS
 
------------------------------------------------------------------------------------------------------------------------------
-Audio
-Per a afegir audios de boot, command and command fail:
-Necessitem 3 .wav
+```csharp
+Sys.FileSystem.VFS.VFSManager.RegisterVFS(fs);
+```
+
+## 📌 Afegir referència necessària
+
+```csharp
+using System.IO;
+```
+
+---
+
+## 💾 Formatació del disc
+
+Primer es busca el disc disponible i després es formata en **FAT32**.
+
+```csharp
+Disk.FormatDisk(int index, string format, bool quick = true)
+```
+
+---
+
+# 📂 Comandes bàsiques implementades
+
+## 📄 Obtenir fitxers d’un directori
+
+```csharp
+var files_list = Directory.GetFiles(@"0:\\");
+```
+
+## 📁 Obtenir directoris
+
+```csharp
+var directory_list = Directory.GetDirectories(@"0:\\");
+```
+
+## 🔍 Mostrar fitxers amb foreach
+
+```csharp
+foreach (var file in files_list)
+{
+    Console.WriteLine(file);
+}
+```
+
+## 📖 Llegir contingut d’un fitxer
+
+```csharp
+var content = File.ReadAllText(file);
+```
+
+## 🆕 Crear fitxer
+
+```csharp
+File.Create(@"0:\\testing.txt");
+```
+
+## 📁 Crear directori
+
+```csharp
+Directory.Create(@"0:\\testdirectory\\");
+```
+
+## ❌ Eliminar fitxer i directori
+
+```csharp
+File.Delete(@"0:\\testing.txt");
+Directory.Delete(@"0:\\testdirectory\\");
+```
+
+---
+
+# 🔊 Sistema d’àudio
+
+Per afegir sons de:
+
+* 🔔 Arrencada
+* ✅ Comanda correcta
+* ❌ Error de comanda
+
+s’utilitzen arxius `.wav`.
+
+## 📌 Càrrega dels àudios
+
+```csharp
 byte[] bootBytes = GetResourceBytes("boot.wav");
 byte[] okBytes = GetResourceBytes("ok.wav");
 byte[] errorBytes = GetResourceBytes("error.wav");
+```
 
-NECESSARI
+## 📌 Llibreries necessàries
+
+```csharp
 using Cosmos.System.Audio;
 using Cosmos.System.Audio.IO;
+```
 
+## 📌 Components utilitzats
+
+```csharp
 AudioMixer mixer;
 AudioManager audioManager;
 MemoryAudioStream bootStream, okStream, errorStream;
+```
 
-*pegar codigo*
+---
 
-L'àudio està implementat amb AudioMixer, MemoryAudioStream i AC97.
-En VMware pot no funcionar correctament perquè el driver d'àudio compatible és AC97.
-Per provar el so es recomana executar el sistema amb VirtualBox i configurar Audio Controller com ICH AC97.
-Per això el que fem es compilar i després agafar la iso que es genera després de compilar i obrir-la amb una màquina virtual de VirtualBox.
+## 🎧 Compatibilitat d’àudio
 
-Hem editat l'arxiu de projecte, .csproj.
+L’àudio està implementat amb:
 
+* `AudioMixer`
+* `MemoryAudioStream`
+* `AC97`
 
------------------------------------------------------------------------------------------------------------------------------
-Hist: Funció que mostra les 5 últimes comandes fetes (s'emmagatzemen en una llista)
+⚠️ En **VMware** pot no funcionar correctament perquè necessita compatibilitat amb el controlador **AC97**.
+
+✅ Es recomana executar NitroOS amb **VirtualBox** configurant:
+
+```text
+Audio Controller → ICH AC97
+```
+
+Després de compilar el projecte, es genera una ISO que es pot carregar directament a la màquina virtual.
+
+També s’ha modificat l’arxiu `.csproj` per adaptar la compilació del sistema.
+
+---
+
+# 📜 Historial de comandes
+
+## 🕘 Hist
+
+Mostra les últimes **5 comandes** executades.
+
+Les comandes s’emmagatzemen dins d’una llista.
+
+```csharp
 (codi)
-Repetir + [num]: A partir de la llista anterior, ennumerada, es pot fer Repetir + un número per a repetir una commanda
+```
+
+---
+
+## 🔁 Repetir + [num]
+
+Permet repetir una comanda anterior utilitzant el número de l’historial.
+
+```csharp
 (codi)
+```
 
------------------------------------------------------------------------------------------------------------------------------
-*Enllaç explicatiu de les comandes implementades:*
+---
 
-> https://github.com/Eduardo2828/NitroOS/blob/main/ideas/comandos.txt
+# 📚 Enllaç explicatiu de les comandes
+
+> urlNitroOS Commands Documentation[https://github.com/Eduardo2828/NitroOS/blob/main/ideas/comandos.txt](https://github.com/Eduardo2828/NitroOS/blob/main/ideas/comandos.txt)
+
+---
+
+# 📜 Llicència
+
+Aquest projecte disposa d’una llicència de **codi obert**.
+
+---
+
+<p align="center">
+  <b>🚀 NitroOS — Aprenent sistemes operatius des de zero 🚀</b>
+</p>
+ https://github.com/Eduardo2828/NitroOS/blob/main/ideas/comandos.txt
