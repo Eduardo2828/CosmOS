@@ -1,8 +1,12 @@
-# 📚 Comandes implementades a NitroOS
-
 <div align="center">
 
-## 🚀 Sistema de comandes de NitroOS
+# 🚀 COMANDOS 🚀
+
+<img src="https://img.shields.io/badge/NitroOS-Shell-blue?style=for-the-badge">
+<img src="https://img.shields.io/badge/C%23-CosmosOS-purple?style=for-the-badge">
+<img src="https://img.shields.io/badge/Terminal-Commands-success?style=for-the-badge">
+
+### 📚 Llistat de comandes disponibles dins de NitroOS
 
 </div>
 
@@ -10,10 +14,10 @@
 
 # 📂 Gestió de fitxers i directoris
 
-| 🖥️ Comanda | 📌 Funció |
+| 💻 Comanda | 📌 Descripció |
 |---|---|
-| `lc` | 📂 Mostra tots els fitxers i carpetes del directori actual |
-| `cdir` | 📁 Canvia el directori actual a un altre especificat |
+| `lc` | 📁 Mostra tots els fitxers i carpetes del directori actual |
+| `cdir` | 📂 Canvia el directori actual a un altre especificat |
 | `hcdir` | 🆕 Crea un nou directori amb el nom indicat |
 | `eldir` | ❌ Elimina un directori especificat |
 | `mc` | 📄 Mostra el contingut d’un fitxer en pantalla |
@@ -22,18 +26,18 @@
 
 # ⚙️ Informació del sistema
 
-| 🖥️ Comanda | 📌 Funció |
+| 💻 Comanda | 📌 Descripció |
 |---|---|
-| `sos` | 🆘 Mostra l’ajuda i totes les comandes disponibles |
-| `edicio` | 🏷️ Mostra la versió actual de NitroOS |
-| `seemem` | 🧠 Mostra la memòria disponible i el consum actual |
+| `sos` | 🆘 Mostra totes les comandes disponibles i la seva ajuda |
+| `edicio` | 🏷️ Mostra la versió actual del sistema operatiu |
+| `seemem` | 🧠 Mostra la memòria disponible i l’ús actual |
 | `tf` | ⏱️ Mostra el temps de funcionament del sistema |
 
 ---
 
 # 🛠️ Utilitats
 
-| 🖥️ Comanda | 📌 Funció |
+| 💻 Comanda | 📌 Descripció |
 |---|---|
 | `lp` | 🧹 Neteja completament la pantalla |
 | `scrib` | ✍️ Escriu text en pantalla o dins d’un fitxer |
@@ -42,7 +46,11 @@
 
 ---
 
-# 💻 Exemple d’ús
+<div align="center">
+
+# 💻 Exemple d'ús
+
+</div>
 
 ```bash
 > lc
