@@ -78,7 +78,7 @@ namespace NitroOS
 
                 case "lp":
                     SoComandaCorrecta();
-                    Console.Clear();
+                    NetejarSortidaGrafica();
                     break;
 
                 case "hist":
