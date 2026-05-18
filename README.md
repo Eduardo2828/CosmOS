@@ -306,30 +306,6 @@ També s’ha modificat l’arxiu `.csproj` per adaptar la compilació del siste
 
 ---
 
-# 📜 Historial de comandes
-
-## 🕘 Hist
-
-Mostra les últimes **5 comandes** executades.
-
-Les comandes s’emmagatzemen dins d’una llista.
-
-```csharp
-(codi)
-```
-
----
-
-## 🔁 Repetir + [num]
-
-Permet repetir una comanda anterior utilitzant el número de l’historial.
-
-```csharp
-(codi)
-```
-
----
-
 # 📚 Enllaç explicatiu de les comandes
 
 > urlNitroOS Commands Documentation[https://github.com/Eduardo2828/NitroOS/blob/main/ideas/comandos.txt](https://github.com/Eduardo2828/NitroOS/blob/main/ideas/comandos.txt)
