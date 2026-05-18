@@ -306,6 +306,77 @@ També s’ha modificat l’arxiu `.csproj` per adaptar la compilació del siste
 
 ---
 
+🖥️ Interfície gràfica (CGS - Cosmos Graphics System)
+
+En aquesta fase s’ha implementat el pas del mode text al mode gràfic utilitzant el subsistema CGS de Cosmos.
+
+S’ha creat un canvas a pantalla completa amb resolució 640x480 i color de 32 bits, mitjançant:
+
+FullScreenCanvas.GetFullScreenCanvas
+
+Aquest sistema permet dibuixar directament sobre la pantalla utilitzant primitives gràfiques com:
+
+▭ Rectangles
+─ Línies
+📝 Text
+🎨 Elements visuals personalitzats
+🎯 Pantalla de benvinguda gràfica
+
+A partir del canvas s’ha dissenyat una pantalla inicial per a NitroOS, que inclou:
+
+Element	Descripció
+🎨 Fons personalitzat	Disseny visual propi del sistema
+🧱 Marc decoratiu	Estructura visual de la pantalla
+🚀 Logotip	Representació simple de NitroOS
+ℹ️ Missatges informatius	Informació del sistema i instruccions
+⌨️ Indicació d’entrada	“Prem Enter per entrar a la shell”
+🧠 Arquitectura del sistema
+
+Aquesta implementació introdueix una separació clara:
+
+🖥️ Capa gràfica inicial (GUI) → Presentació del sistema
+💻 Shell (CLI) → Execució de comandes
+
+👉 La shell deixa de ser l’única interfície del sistema i passa a estar darrere d’una capa gràfica inicial, mantenint la mateixa lògica de comandaments però millorant l’experiència d’usuari.
+
+🧩 Adaptació de les comandes al mode gràfic
+
+El pas a mode gràfic també afecta directament el sistema de comandes, ja que aquestes deixen d’estar pensades exclusivament per a la shell en mode text.
+
+Anteriorment, les ordres retornaven la informació directament per consola. En canvi, ara en entorn gràfic, la sortida s’ha de representar dins d’un Canvas, dibuixant manualment:
+
+📝 Texts
+🎨 Elements visuals
+🪟 Components d’interfície
+🔄 Canvis principals
+Abans (mode text)	Ara (mode gràfic)
+Sortida per consola	Sortida sobre Canvas
+Console.WriteLine()	Dibuix manual de text
+Flux lineal	Interfície visual estructurada
+⚙️ Impacte en les comandes
+
+Les comandes existents s’han d’adaptar perquè:
+
+🖥️ Ja no n’hi ha prou amb imprimir text
+🎯 Cal definir com es mostra la informació dins la UI
+🧭 La sortida pot anar a pantalles, menús o elements visuals
+⌨️ L’entrada de l’usuari s’ha de gestionar dins d’un entorn gràfic
+🧠 Disseny del sistema
+
+Aquest canvi implica una evolució important en l’arquitectura:
+
+🧩 La lògica de les comandes es manté independent
+🎨 La visualització es separa completament
+🔌 Es crea una connexió entre comandes i interfície gràfica
+🚀 Resultat
+
+Aquest enfocament no elimina les comandes, sinó que:
+
+✔ Les manté funcionals
+✔ Les adapta al nou entorn gràfic
+✔ Millora la modularitat del sistema
+✔ Prepara NitroOS per futures interfícies més avançades
+
 # 📚 Enllaç explicatiu de les comandes
 
 > urlNitroOS Commands Documentation[https://github.com/Eduardo2828/NitroOS/blob/main/ideas/comandos.txt](https://github.com/Eduardo2828/NitroOS/blob/main/ideas/comandos.txt)
