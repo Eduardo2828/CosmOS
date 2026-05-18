@@ -5,8 +5,8 @@ Llistat de comandes disponibles a NitroOS
 💻 Comanda	                  📌 Funció
 lc	               Mostra tots els fitxers i carpetes que hi ha dins del directori actual
 cdir               Canvia el directori actual a un altre especificat
-hcdir	             Crea un nou directori (carpeta) amb el nom que li indiquis
-eldir	             Elimina un directori especificat (només si està buit o amb advertiment)
+hcdir	            Crea un nou directori (carpeta) amb el nom que li indiquis
+eldir	            Elimina un directori especificat (només si està buit o amb advertiment)
 mc	               Mostra el contingut d’un fitxer en pantalla sense obrir un editor
 
 
